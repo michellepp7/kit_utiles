@@ -5,22 +5,28 @@ Funciones de texto para practicar el uso de pytest con fixtures y parametrizaci�
 
 import re
 from collections import Counter
+import unicodedata
 
 # Expresión regular simple para tokenizar palabras (sin tildes complicadas)
 _TOKENIZER = re.compile(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9]+")
 
+def _normalize_token(token: str) -> str:
+    """Elimina tildes y normaliza el texto."""
+    nfkd = unicodedata.normalize("NFD", token)
+    return "".join([c for c in nfkd if unicodedata.category(c) != "Mn"])
 
 def word_count(text: str) -> dict[str, int]:
     """
     Cuenta la frecuencia de palabras en un texto.
     Ignora mayúsculas/minúsculas y signos de puntuación básicos.
+    Además elimina acentos (tildes).
     """
     tokens = _TOKENIZER.findall(text.lower())
+    tokens = [_normalize_token(t) for t in tokens]
     return dict(Counter(tokens))
 
 
-_EMAIL = re.compile(r"^[A-Za-z0-9._-]+@[A-Za-z0-9-]+\.[A-Za-z]{2,10}$")
-
+_EMAIL = re.compile(r"^[A-Za-z0-9._-]+@(?:[A-Za-z0-9-]+\.)+[A-Za-z]{2,}$")
 
 def validate_email(email: str) -> bool:
     """
