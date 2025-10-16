@@ -12,9 +12,9 @@ def save_lines(path: Path, lines: Iterable[str]) -> None:
     Guarda una lista de cadenas en un archivo, una por línea.
     No añade líneas en blanco adicionales.
     """
+    path.parent.mkdir(parents=True, exist_ok=True)
     content = "\n".join(lines)
     path.write_text(content, encoding="utf-8")
-
 
 def load_lines(path: Path) -> list[str]:
     """

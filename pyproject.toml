@@ -5,7 +5,6 @@ build-backend = "setuptools.build_meta"
 [tool.pytest.ini_options]
 addopts = "--cov=src --cov-report=term-missing --cov-report=xml --cov-fail-under=75"
 testpaths = ["tests"]
-pythonpath = ["src"]
 
 [tool.coverage.run]
 source = ["src"]

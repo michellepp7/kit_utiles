@@ -1,0 +1,13 @@
+# Created by pytest automatically.
+# Entorno virtual
+venvKitUtiles/
+__pycache__/
+*.pyc
+
+# Archivos de cobertura
+.coverage
+coverage.xml
+htmlcov/
+
+# Archivos temporales de VS Code
+.vscode/

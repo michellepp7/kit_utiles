@@ -26,11 +26,7 @@ def word_count(text: str) -> dict[str, int]:
     return dict(Counter(tokens))
 
 
-_EMAIL = re.compile(
-    r"^[A-Za-z0-9._-]+@"        # usuario
-    r"(?:[A-Za-z0-9-]+\.)+"     # uno o más subdominios
-    r"[A-Za-z]{2,60}$"          # TLD 2–10 letras
-)
+_EMAIL = re.compile(r"^[A-Za-z0-9._-]+@(?:[A-Za-z0-9-]+\.)+[A-Za-z]{2,10}$")
 
 def validate_email(email: str) -> bool:
     """
