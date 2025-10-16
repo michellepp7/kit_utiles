@@ -1,5 +1,6 @@
 # Si safe_divide no valida tipos, este test debe fallar:
 # Arreglo sugerido: comprobar isinstance(a,(int,float)) e idem b, y lanzar TypeError con mensaje claro.
+
 import pytest
 from src.numbers import safe_divide
 
