@@ -10,3 +10,6 @@ htmlcov/
 
 # Archivos temporales de VS Code
 .vscode/
+.coverage
+.pytest_cache/
+coverage.xml
