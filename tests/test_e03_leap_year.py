@@ -1,5 +1,5 @@
 import pytest
-from src.paquete_proyecto.numbers import is_leap_year
+from src.numbers import is_leap_year
 
 @pytest.mark.parametrize("year, expected", [
     (2000, True),

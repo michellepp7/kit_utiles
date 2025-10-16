@@ -1,5 +1,5 @@
 import pytest
-from src.paquete_proyecto.strings import validate_email
+from src.strings import validate_email
 
 
 @pytest.mark.parametrize("email", [

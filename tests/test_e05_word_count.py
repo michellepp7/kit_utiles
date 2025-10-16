@@ -1,5 +1,5 @@
 import pytest
-from src.paquete_proyecto.strings import word_count
+from src.strings import word_count
 
 
 def texto():

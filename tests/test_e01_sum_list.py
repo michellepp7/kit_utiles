@@ -1,5 +1,5 @@
 import pytest
-from src.paquete_proyecto.numbers import sum_list
+from src.numbers import sum_list
 
 def test_sum_list():
     nums = [1, 2, 3, 4]

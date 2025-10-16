@@ -1,5 +1,5 @@
 import pytest
-from src.paquete_proyecto.cli import main
+from src.cli import main
 
 def test_main(capsys):
     main(["prog", "1,2,3"])

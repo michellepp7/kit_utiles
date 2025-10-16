@@ -1,5 +1,5 @@
 import pytest
-from src.paquete_proyecto.numbers import unique_sorted
+from src.numbers import unique_sorted
 
 
 def test_unique_sorted():

@@ -1,6 +1,6 @@
 import pytest
-from src.paquete_proyecto.files import save_lines
-from src.paquete_proyecto.files import load_lines
+from src.files import save_lines
+from src.files import load_lines
 
 
 @pytest.fixture

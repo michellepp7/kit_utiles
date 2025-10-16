@@ -1,5 +1,5 @@
 import pytest
-from src.paquete_proyecto.numbers import safe_divide
+from src.numbers import safe_divide
 
 def test_safe_divide_ok():
     assert safe_divide(10, 2) == 5

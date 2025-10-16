@@ -1,5 +1,5 @@
 import pytest
-from src.paquete_proyecto.numbers import grade
+from src.numbers import grade
 
 @pytest.mark.parametrize("score, expected", [
     (100, "A"),
