@@ -28,6 +28,7 @@ def word_count(text: str) -> dict[str, int]:
 
 _EMAIL = re.compile(r"^[A-Za-z0-9._-]+@(?:[A-Za-z0-9-]+\.)+[A-Za-z]{2,10}$")
 
+
 def validate_email(email: str) -> bool:
     """
     Valida un correo electrónico simple:

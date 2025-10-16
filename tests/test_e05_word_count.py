@@ -2,8 +2,10 @@ import pytest
 from src.strings import word_count
 
 
+@pytest.fixture
 def texto():
     return "Hola, hola... ¿Qué tal? Tal vez bien: hola!"
+
 
 def test_word_count(texto):
     resultado = word_count(texto)
