@@ -1,0 +1,71 @@
+name: Python CI — pytest, coverage ≥ 85 %, artifacts, LFS
+
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+
+    steps:
+    - name: Checkout (with Git LFS)
+      uses: actions/checkout@v4
+      with:
+        lfs: true  # Descarga los ficheros grandes versionados con LFS
+
+
+    - name: Ensure Git LFS setup
+      run: |
+        git lfs install
+        git lfs pull
+        git lfs ls-files
+
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.13"
+        cache: "pip"
+        cache-dependency-path: |
+          requirements.txt
+
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then
+          pip install -r requirements.txt
+        fi
+        pip install pytest pytest-cov
+
+
+    - name: Run tests with coverage (≥ 85%)
+      run: |
+        pytest \
+          --maxfail=1 --disable-warnings -q \
+          --cov=kit_utiles \
+          --cov-report=term-missing \
+          --cov-report=xml:coverage.xml \
+          --cov-report=html \
+          --cov-fail-under=85
+
+
+    - name: Upload coverage reports
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-reports
+        path: |
+          htmlcov/
+          coverage.xml
+        retention-days: 14
