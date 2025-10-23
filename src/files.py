@@ -13,7 +13,6 @@ def save_lines(path: Path, lines: Iterable[str]) -> None:
     No añade líneas en blanco adicionales.
     """
     path = Path(path)  # Asegura que sea un Path
-    
     path.parent.mkdir(parents=True, exist_ok=True)
 
     # 2) Escribir las líneas en el archivo
